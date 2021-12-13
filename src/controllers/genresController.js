@@ -1,6 +1,6 @@
-const db = require ('./database/models/Generos.js');
+const db = require ('../database/models/Genero.js');
 
-const moviesController={
+const genresController={
     list: function(req, res){
         db.Generos.findAll()
         .then(function(generos){
@@ -17,5 +17,6 @@ const moviesController={
     },
     
 }
-    
+
+module.exports=genresController
 

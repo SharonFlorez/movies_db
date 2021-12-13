@@ -30,7 +30,7 @@ module.exports = (sequelize, dataTypes) => {
     };
     const configuracion ={ 
         tableName: "movies",
-        timestamps: false
+        timestamps: true
     };
     
     

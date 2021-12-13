@@ -24,7 +24,7 @@ module.exports = (sequelize, dataTypes) => {
     };
     const configuracion ={ 
         tableName: "actors",
-        timestamps: false
+        timestamps: true
     };
     
     

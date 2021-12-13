@@ -21,7 +21,7 @@ module.exports = (sequelize, dataTypes) => {
     };
     const configuracion ={ 
         tableName: "genres",
-        timestamps: false
+        timestamps: true
     };
     
     

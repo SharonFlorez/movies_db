@@ -1,4 +1,4 @@
-const db = require ('./database/models/Peliculas.js');
+const db = require ('../database/models/Pelicula.js');
 
 const moviesController={
     list: function(req, res){
@@ -41,3 +41,4 @@ const moviesController={
 }
 
 
+module.exports=moviesController

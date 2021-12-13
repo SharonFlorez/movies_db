@@ -1,4 +1,4 @@
-const db = require ('./database/models/Actores.js');
+const db = require ('../database/models/Actor.js');
 
 const actorsController={
     list: function(req, res){
@@ -19,3 +19,4 @@ const actorsController={
 }
 
 
+module.exports=actorsController
