@@ -16,9 +16,9 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.resolve(__dirname, '../public')));
 
 app.use('/', indexRouter);
-app.use('/movies', moviesRoutes)
-app.use('/genres', genresRoutes)
-app.use('/actors', actorsRoutes)
+app.use('/', moviesRoutes)
+app.use('/', genresRoutes)
+app.use('/', actorsRoutes)
 
 
 
