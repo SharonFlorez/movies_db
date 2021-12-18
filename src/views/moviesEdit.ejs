@@ -14,7 +14,7 @@
       </figure>
     <h1 class="titulo">Película a Editar:  <%= pelicula.title %></h1>
     <section class="formulario">
-        <form action="/movies/edit/<%= pelicula.id %>" method="POST">
+        <form action="/edit/<%= pelicula.id %>" method="POST">
             <label for="title">Title </label>
             <p><input type="text" name="title" id="title" value="<%= pelicula.title %>" required></p>
             <label for="rating">Rating </label>
@@ -25,10 +25,28 @@
             <p><input type="date" name="release_date" id="release_date" value="<%= pelicula.release_date %>" required></p>
             <label for="length">Length </label>
             <p><input type="number" name="length" id="" value="<%= pelicula.length %>" required></p>
+            <div>
+                <label for="">Genre</label>
+                <select name="genero">
+                    <% for( let i = 0; i < generos.length; i++ ) { %>
+                        <% if (generos[i].id == pelicula.genre_id) { %>
+                            <option value="<%=generos[i].id %>" selected>
+                                <%=generos[i].name %>                            
+                            </option>
+                        <% } else { %>
+                            <option value="<%=generos[i].id %>">
+                                <%=generos[i].name %>                            
+                            </option>                        
+                         
+                        <% } %>
+                    
+                    <% } %>
+                </select>
+            </div>
             <br>
             <p> <button class="botonAgregar" type="submit">Actualizar</button>
         
-            <a  class="botonVolver" href="/moviesList">Listado de Películas</a></p>
+            <a  class="botonVolver" href="/">Listado de Películas</a></p>
         </form>
     </section>
 </body>

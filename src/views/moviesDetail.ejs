@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= movie.title %> </title>
+    <title><%= pelicula.title %> </title>
     <link rel='stylesheet' href='/css/style.css' />
 
 </head>
@@ -11,12 +11,39 @@
     <figure>
         <img src="/img/logo-DH.png" alt="Logo Digital House">
     </figure>
-    <h1><%= movie.title %> </h1>    
+    <h1><%= pelicula.title %> </h1>    
     <br>
-    <p>RATING: <%= movie.rating %> </p>
-    <p>AWARDS: <%= movie.awards %> </p>
-    <p>LENGTH: <%= movie.length + ' min'%> </p>
-    <p>RELEASE DATE: <%= movie.release_date %> </p>
+    <p>RATING: <%= pelicula.rating %> </p>
+    <p>AWARDS: <%= pelicula.awards %> </p>
+    <p>LENGTH: <%= pelicula.length + ' min'%> </p>
+    <p>RELEASE DATE: <%= pelicula.release_date %> </p>
+    <p>GENRE: <%= pelicula.genero.name %> </p>
+    <li>ACTOR:
+        <ul>
+            <% for( let i = 0; i < pelicula.actores.length; i++ ) { %>
+            <li>
+                <%=pelicula.actores[i].first_name%> <%=pelicula.actores[i].last_name%> 
+            </li>
+            <% } %>
+        </ul>
+    </li>
+    <a href="/edit/<%=pelicula.id%> ">
+        <button>Modificar</button>
+    </a>
+    
+    
+    <ul>
+        <li>
+            <a href="/add">Agregar Película</a>
+        </li>
+        <li>
+            <a href="/">Listado de Películas</a>
+        </li>
+        <li>
+            <a href="/delete/<%=pelicula.id%>">Borrar</a>
+        </li>
+    </ul>
+
 
 </body>
 </html>
