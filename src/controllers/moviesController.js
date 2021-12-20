@@ -1,8 +1,12 @@
-const db = require ('../database/models/Pelicula.js');
+const db = require ('../database/models');
+const Peliculas = require ('../database/models/Pelicula.js');
+const Generos = require ('../database/models/Genero.js');
+
+
 
 const moviesController={
     list: function(req, res){
-        db.Peliculas.findAll({
+        Peliculas.findAll({
             include: [{association: "generos"}, { association: "actores"}]
         })
         .then(function(peliculas){
@@ -11,7 +15,7 @@ const moviesController={
 
     },
     detail: function(req, res){
-        db.Peliculas.findByPk(req.params.id, {
+        Peliculas.findByPk(req.params.id, {
             include: [{association: "generos"}, { association: "actores"}]
         })
         .then(function(pelicula){
@@ -20,7 +24,7 @@ const moviesController={
 
     },
     new: function(req, res){
-        db.Peliculas.findAll({
+        Peliculas.findAll({
             order: [
                 ['rating', 'DESC']
             ]
@@ -31,7 +35,7 @@ const moviesController={
     },
 
     recomended: function(req, res){
-        db.Peliculas.findAll({
+        Peliculas.findAll({
             order: [
                 ['release_date', 'DESC']
             ],         
@@ -45,7 +49,7 @@ const moviesController={
     
     //Aqui debemos modificar y completar lo necesario para trabajar con el CRUD
     add: function (req, res) {
-        db.Generos.findAll()
+        Generos.findAll()
         .then(function(generos){
             return res.render("moviesAdd", {generos:generos});
 
@@ -53,7 +57,7 @@ const moviesController={
         
     },
     create: function (req, res) {
-       db.Peliculas.create({
+        Peliculas.create({
            title: req.body.title,
            rating: req.body.rating,
            awards: req.body.awards,
@@ -76,7 +80,7 @@ const moviesController={
     },
 
     update: function (req,res) {
-        db.Peliculas.update({
+        Peliculas.update({
             title: req.body.title,
             rating: req.body.rating,
             awards: req.body.awards,
@@ -93,13 +97,13 @@ const moviesController={
     },
 
     delete: function (req, res) {
-        db.Peliculas.findByPk(req.params.id)
+        Peliculas.findByPk(req.params.id)
         .then(function(pelicula){
             res.render("moviesDelete", {pelicula:pelicula})
         })
     },
     destroy: function (req, res) {
-        db.peliculas.destroy({
+        Peliculas.destroy({
             where: {
                id: req.params.id 
             }

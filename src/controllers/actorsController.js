@@ -1,15 +1,16 @@
-const db = require ('../database/models/Actor.js');
+const db = require ('../database/models');
+const Actores = require ('../database/models/Actor.js');
 
 const actorsController={
     list: function(req, res){
-        db.Actores.findAll()
+        Actores.findAll()
         .then(function(Actores){
             res.render("actorsList", {actores:actores})
         })
 
     },
     detail: function(req, res){
-        db.Actores.findByPk(req.params.id)
+        Actores.findByPk(req.params.id)
         .then(function(actor){
             res.render("actorDetail", {actor:actor})
         })
